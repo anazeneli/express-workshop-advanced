@@ -1,12 +1,22 @@
+// by default, only sudo-ers can see dotenv
+// only need to run in entry point 
+require('dotenv').config();
+
 var express = require('express');
 var app = express();
 var chalk = require('chalk');
-// var routes = require('./routes'); uncomment this when you are ready to connect your router
+var volleyball = require('volleyball');
+var bodyParser = require('body-parser');
+var routes = require('./routes');
+
+app.use(volleyball)
+app.use(bodyParser.json());
+
+app.use('/api', routes)
 
 app.get('/', function (req, res, next) {
   res.send('Root Route');
 });
-
 
 var PORT = 8000;
 
