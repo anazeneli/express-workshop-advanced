@@ -14,7 +14,7 @@ router.get('/:name', function (req, res, next) {
 });
 
 router.post('/', function(req,res){
-  if(getUserByName(req.body.name)) {
+  if(users.getUserByName(req.body.name)) {
       var err = new Error('User already exists"');
       next(err);
   }
